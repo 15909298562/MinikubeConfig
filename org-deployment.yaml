@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dev-zj
+  name: org-deployment
+  labels:
+    app: org-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: org
+  template:
+    metadata:
+      labels:
+        app: org
+    spec:
+      containers:
+      - name: org
+        image: registry.cn-beijing.aliyuncs.com/hssk/dev-zj-org
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+          - name: org-logs-volumes
+            mountPath: /opt/logs
+            subPath: org
+      imagePullSecrets:
+      - name: hssk-secret
+      volumes:
+        - name: org-logs-volumes
+          persistentVolumeClaim:
+            claimName: pvc

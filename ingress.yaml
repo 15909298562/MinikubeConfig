@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: namespace
+  name: ingress
+  labels:
+    app: ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "hssk.com"
+    http:
+      paths:
+      - path: /portal
+        pathType: Prefix
+        backend:
+          service:
+            name: portal-service
+            port:
+              number: 8083
+      - path: /logmanage
+        pathType: Prefix
+        backend:
+          service:
+            name: logmanage-service
+            port:
+              number: 8098
+      - path: /org
+        pathType: Prefix
+        backend:
+          service:
+            name: org-service
+            port:
+              number: 8081
+      - path: /security
+        pathType: Prefix
+        backend:
+          service:
+            name: security-service
+            port:
+              number: 8082

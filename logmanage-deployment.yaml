@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dev-zj
+  name: logmanage-deployment
+  labels:
+    app: logmanage-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logmanage
+  template:
+    metadata:
+      labels:
+        app: logmanage
+    spec:
+      containers:
+      - name: logmanage
+        image: registry.cn-beijing.aliyuncs.com/hssk/dev-zj-logmanage
+        ports:
+        - containerPort: 8098
+        volumeMounts:
+          - name: logmanage-logs-volumes
+            mountPath: /opt/logs
+            subPath: logmanage
+      imagePullSecrets:
+      - name: hssk-secret
+      volumes:
+        - name: logmanage-logs-volumes
+          persistentVolumeClaim:
+            claimName: pvc

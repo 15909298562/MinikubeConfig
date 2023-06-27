@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dev-zj
+  name: security-deployment
+  labels:
+    app: security-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security
+  template:
+    metadata:
+      labels:
+        app: security
+    spec:
+      containers:
+      - name: security
+        image: registry.cn-beijing.aliyuncs.com/hssk/dev-zj-security
+        ports:
+        - containerPort: 8082
+        volumeMounts:
+          - name: security-logs-volumes
+            mountPath: /opt/logs
+            subPath: security
+      imagePullSecrets:
+      - name: hssk-secret
+      volumes:
+        - name: security-logs-volumes
+          persistentVolumeClaim:
+            claimName: pvc

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dev-zj
+  name: portal-deployment
+  labels:
+    app: portal-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portal
+  template:
+    metadata:
+      labels:
+        app: portal
+    spec:
+      containers:
+      - name: portal
+        image: registry.cn-beijing.aliyuncs.com/hssk/dev-zj-portal
+        ports:
+        - containerPort: 8083
+        volumeMounts:
+          - name: portal-logs-volumes
+            mountPath: /opt/logs
+            subPath: portal
+      imagePullSecrets:
+      - name: hssk-secret
+      volumes:
+        - name: portal-logs-volumes
+          persistentVolumeClaim:
+            claimName: pvc

@@ -1,0 +1,2 @@
+# MinikubeConfig
+使用minikube学习kubernetes时常用到的配置文件

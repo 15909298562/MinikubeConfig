@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  namespace: dev-zj
+  namespace: namespace-name
   name: pv
   labels:
     type: pv

@@ -18,8 +18,9 @@ minikube start -p node-name --driver=docker --kubernetes-version=v1.23.8 --image
   minikube -p node-name ingress</br>
 如果ingress一直启动不起来，大概率是因为镜像拉不下来，这个时候可以使用kubernetes-ingress.yaml文件来进行创建并启用
 
-# 创建namespace secret pv pvc注意将名称空间更改为你的名称空间，密钥中配置你的docker仓库用户名和密码，如果你没有私有仓库可以去阿里云注册一个，免费的，地址：https://cr.console.aliyun.com/cn-beijing/instance/dashboard
-  kubectl apply -f namespace.yaml,secret.yaml,pv.yaml,pvc.yaml
+# 创建namespace secret pv pvc注意将名称空间更改为你的名称空间
+  kubectl apply -f namespace.yaml,secret.yaml,pv.yaml,pvc.yaml</br>
+密钥中配置你的docker仓库用户名和密码，如果你没有私有仓库可以去阿里云注册一个，免费的，地址：https://cr.console.aliyun.com/cn-beijing/instance/dashboard
 
 # 创建deployment service ingress注意将名称空间更改为你的名称空间
   kubectl apply -f your-deployment.yaml,your-service.yaml,your-ingress.yaml

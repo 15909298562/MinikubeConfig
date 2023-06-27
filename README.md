@@ -30,5 +30,5 @@ minikube start -p node-name --driver=docker --kubernetes-version=v1.23.8 --image
 我们在集群外部可以通过如下规则访问应用：</br>
   http://[proxy-ip]:[proxy-port]/api/v1/namespaces/[namespace-name]/services/[service-name]/proxy
 
-<hr style="height:2px">
+<hr style="height:1px"/>
 至此已经完成了minikube创建集群节点并启动相关组件的活动，可以在dashboard面板中看到当前名称空间下的所有组件，绿色就表示成功。

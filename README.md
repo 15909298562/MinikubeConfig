@@ -25,8 +25,9 @@ minikube start -p node-name --driver=docker --kubernetes-version=v1.23.8 --image
 # 创建deployment service ingress注意将名称空间更改为你的名称空间
   kubectl apply -f your-deployment.yaml,your-service.yaml,your-ingress.yaml
 
-# 至此已经完成了minikube创建集群节点并启动相关组件的活动，可以在dashboard面板中看到当前名称空间下的所有组件，绿色就表示成功
-
 # kubectl为我们提供代理的模式可以代理集群中的应用
   kubectl proxy --address="192.168.1.11" --port=80 --accept-hosts="^*$" -n namespace-name</br>
-我们在集群外部可以通过如下规则访问应用：http://[proxy-ip]:[proxy-port]/api/v1/namespaces/[namespace-name]/services/[service-name]/proxy
+我们在集群外部可以通过如下规则访问应用：</br>
+  http://[proxy-ip]:[proxy-port]/api/v1/namespaces/[namespace-name]/services/[service-name]/proxy
+
+至此已经完成了minikube创建集群节点并启动相关组件的活动，可以在dashboard面板中看到当前名称空间下的所有组件，绿色就表示成功

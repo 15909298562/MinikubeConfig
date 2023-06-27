@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: dev-zj
+  namespace: namespace-name
   name: portal-service
   labels:
     app: portal-service

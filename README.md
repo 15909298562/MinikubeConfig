@@ -3,10 +3,10 @@
 
 # 使用minikube创建minikube集群节点
 minikube start -p node-name --driver=docker --kubernetes-version=v1.23.8 --image-mirror-country="cn" --registry-mirror=https://hz4anb2p.mirror.aliyuncs.com --registry-mirror=https://hub-mirror.c.163.com --registry-mirror=https://docker.mirrors.ustc.edu.cn --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers --insecure-registry=registry.cn-hangzhou.aliyuncs.com --insecure-registry=registry.k8s.io --mount-port=22 --mount=true --mount-ip="192.168.1.11" --mount-string='E:\AX\Project\dockerfile\MinikubeLogs:/opt/logs'
-\n说明：
-  \n1、node-name是集群节点的名称
-  \n2、--mount-port=22表示将节点的22端口映射到宿主机的22端口
-  \n3、--mount-string='E:\AX\Project\dockerfile\MinikubeLogs:/opt/logs'将节点的资源路径映射到宿主机上
+</br>说明：
+  1、node-name是集群节点的名称
+  2、--mount-port=22表示将节点的22端口映射到宿主机的22端口
+  3、--mount-string='E:\AX\Project\dockerfile\MinikubeLogs:/opt/logs'将节点的资源路径映射到宿主机上
 
 # 启用dashboard
   minikube -p node-name addons enable dashboard
